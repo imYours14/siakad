@@ -30,6 +30,11 @@
                                 aria- describedby="Nama">
                         </div>
                         <div class="form-group">
+                            <label for="TTL">Tempat Tanggal Lahir</label>
+                            <input type="date" name="TTL" class="form-control" id="TTL" value="{{ $Mahasiswa->TTL }}"
+                                aria- describedby="TTL">
+                        </div>
+                        <div class="form-group">
                             <label for="Kelas">Kelas</label>
                             <input type="Kelas" name="Kelas" class="form-control" id="Kelas"
                                 value="{{ $Mahasiswa->Kelas }}" aria- describedby="Kelas">
@@ -44,6 +49,11 @@
 
                             <input type="No_Handphone" name="No_Handphone" class="form-control" id="No_Handphone"
                                 value="{{ $Mahasiswa->No_Handphone }}" aria- describedby="No_Handphone">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">E-mail</label>
+                            <input type="text" name="Email" class="form-control" id="Email" value="{{ $Mahasiswa->Email }}"
+                                aria- describedby="Email">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

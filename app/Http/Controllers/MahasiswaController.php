@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 
+
 class MahasiswaController extends Controller
 {
     /**
@@ -15,9 +16,11 @@ class MahasiswaController extends Controller
     public function index(Request $request)
     {
         //fungsi eloquent menampilkan data menggunakan paginaon
-        $mahasiswa = Mahasiswa::all(); // Mengambil semua isi tabel
+        $keyword = $request->keyword;
+        $mahasiswa = Mahasiswa::where('Nama', 'LIKE', '%'.$keyword.'%')->paginate(5); // Mengambil 5 isi tabel
+        // ----
         $posts = Mahasiswa::orderBy('Nim', 'desc')->paginate(6);
-        return view('mahasiswa.index', compact('mahasiswa'))
+        return view('mahasiswa.index', compact('mahasiswa','keyword'))
                 ->with('i', ($request->input('page', 1) - 1) * 5);
 
     }
@@ -41,8 +44,8 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         //melakukan validasi data
-        $request->validate([ 'Nim' => 'required', 'Nama' => 'required', 'Kelas' => 'required',
-        'Jurusan' => 'required', 'No_Handphone' => 'required',
+        $request->validate([ 'Nim' => 'required', 'Nama' => 'required','TTL' => 'required', 'Kelas' => 'required',
+        'Jurusan' => 'required', 'No_Handphone' => 'required','Email' => 'required'
         ]);
         //fungsi eloquent untuk menambah data
         Mahasiswa::create($request->all());

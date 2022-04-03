@@ -4,11 +4,24 @@
             <div class="pull-left mt-2">
                 <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
             </div>
-            <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
-            </div>
         </div>
     </div>
+
+    <div class="float-left my-2">
+        <form action="{{ route('mahasiswa.index') }}" method="GET">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="keyword" value="{{ $keyword }}" size ="80" placeholder="Input Nama Mahasiswa">
+                <div class="col-auto">
+                    <button class="btn btn-info" type="submit">Pencarian</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="float-right my-2">
+        <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
+    </div>
+</div>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -20,9 +33,11 @@
         <tr>
             <th>Nim</th>
             <th>Nama</th>
+            <th>Tempat Tanggal Lahir</th>
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>No_Handphone</th>
+            <th>E-mail</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($mahasiswa as $Mahasiswa)
@@ -30,9 +45,11 @@
 
                 <td>{{ $Mahasiswa->Nim }}</td>
                 <td>{{ $Mahasiswa->Nama }}</td>
+                <td>{{ $Mahasiswa->TTL }}</td>
                 <td>{{ $Mahasiswa->Kelas }}</td>
                 <td>{{ $Mahasiswa->Jurusan }}</td>
                 <td>{{ $Mahasiswa->No_Handphone }}</td>
+                <td>{{ $Mahasiswa->Email }}</td>
                 <td>
                     <form action="{{ route('mahasiswa.destroy', $Mahasiswa->Nim) }}" method="POST">
 
@@ -48,4 +65,5 @@
             </tr>
         @endforeach
     </table>
+    {{ $mahasiswa->links()}}
 @endsection
