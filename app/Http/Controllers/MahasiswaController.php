@@ -167,4 +167,10 @@ class MahasiswaController extends Controller
         -> with('success', 'Mahasiswa Berhasil Dihapus');
 
     }
+
+    public function Mahasiswa_MataKuliah($Nim)
+    {
+        $mahasiswa = Mahasiswa::where('Nim', $Nim)->first();
+        return view('mahasiswa.nilai', ['mahasiswa' => $mahasiswa]);
+    }
 }

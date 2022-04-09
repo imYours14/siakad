@@ -33,12 +33,12 @@
         <tr>
             <th>Nim</th>
             <th>Nama</th>
-            <th>Tempat Tanggal Lahir</th>
+            <th>TTL</th>
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>No_Handphone</th>
             <th>E-mail</th>
-            <th width="280px">Action</th>
+            <th width="400px">Action</th>
         </tr>
         @foreach ($paginate as $Mahasiswa)
             <tr>
@@ -56,6 +56,8 @@
                         <a class="btn btn-info" href="{{ route('mahasiswa.show', $Mahasiswa->Nim) }}">Show</a>
 
                         <a class="btn btn-primary" href="{{ route('mahasiswa.edit', $Mahasiswa->Nim) }}">Edit</a>
+
+                        <a class="btn btn-warning" href="{{ route('nilai', $Mahasiswa->Nim) }}"> Nilai</a>
                         @csrf
                         @method('DELETE')
 
