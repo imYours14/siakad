@@ -10,7 +10,7 @@
     <div class="float-left my-2">
         <form action="{{ route('mahasiswa.index') }}" method="GET">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="keyword" value="{{ $keyword }}" size ="80" placeholder="Input Nama Mahasiswa">
+                <input type="text" class="form-control" name="keyword" size="80" placeholder="Input Nama Mahasiswa">
                 <div class="col-auto">
                     <button class="btn btn-info" type="submit">Pencarian</button>
                 </div>
@@ -21,7 +21,7 @@
     <div class="float-right my-2">
         <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
     </div>
-</div>
+
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -40,13 +40,13 @@
             <th>E-mail</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($mahasiswa as $Mahasiswa)
+        @foreach ($paginate as $Mahasiswa)
             <tr>
 
                 <td>{{ $Mahasiswa->Nim }}</td>
                 <td>{{ $Mahasiswa->Nama }}</td>
                 <td>{{ $Mahasiswa->TTL }}</td>
-                <td>{{ $Mahasiswa->Kelas }}</td>
+                <td>{{ $Mahasiswa->Kelas->nama_kelas }}</td>
                 <td>{{ $Mahasiswa->Jurusan }}</td>
                 <td>{{ $Mahasiswa->No_Handphone }}</td>
                 <td>{{ $Mahasiswa->Email }}</td>
@@ -65,5 +65,5 @@
             </tr>
         @endforeach
     </table>
-    {{ $mahasiswa->links()}}
+    {{ $paginate->links() }}
 @endsection
