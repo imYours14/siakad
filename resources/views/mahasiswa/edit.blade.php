@@ -59,6 +59,7 @@
                             <input type="text" name="Email" class="form-control" id="Email" value="{{ $Mahasiswa->Email }}"
                                 aria- describedby="Email">
                         </div>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
