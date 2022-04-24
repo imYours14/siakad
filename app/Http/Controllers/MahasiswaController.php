@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\Kelas;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 
 class MahasiswaController extends Controller
@@ -176,5 +177,11 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::where('Nim', $Nim)->first();
         return view('mahasiswa.nilai', ['mahasiswa' => $mahasiswa]);
+    }
+
+    public function cetak_pdf($Nim){
+        $mahasiswa = Mahasiswa::where('Nim', $Nim)->first();
+        $pdf = PDF::loadview('mahasiswa.nilai',['mahasiswa'=>$mahasiswa]);
+        return $pdf->stream();
     }
 }
