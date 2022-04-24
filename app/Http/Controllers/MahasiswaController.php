@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\Kelas;
+use Illuminate\Support\Facades\Storage;
 
 
 class MahasiswaController extends Controller
@@ -52,6 +53,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'Nim' => 'required',
             'Nama' => 'required',
+            'Foto' => 'required|file|image|mimes:jpeg,png,jpg|max:1024',
             'TTL' => 'required',
             'Kelas' => 'required',
             'Jurusan' => 'required',
@@ -63,6 +65,7 @@ class MahasiswaController extends Controller
         $mahasiswa = new Mahasiswa;
         $mahasiswa -> Nim = $request->get('Nim');
         $mahasiswa -> Nama = $request ->get('Nama');
+        $mahasiswa -> Foto = $request->file('Foto')->store('images', 'public');
         $mahasiswa -> TTL = $request ->get('TTL');
         $mahasiswa -> Jurusan =$request ->get('Jurusan');
         $mahasiswa -> No_Handphone = $request ->get('No_Handphone');
@@ -123,6 +126,7 @@ class MahasiswaController extends Controller
         $request->validate([
         'Nim' => 'required',
         'Nama' => 'required',
+        'Foto' => 'required|file|image|mimes:jpeg,png,jpg|max:1024',
         'TTL' => 'required',
         'Kelas' => 'required',
         'Jurusan' => 'required',

@@ -6,13 +6,14 @@
                 <div class="card-header"> Detail Mahasiswa</div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><b>Nim: </b>{{ $Mahasiswa->Nim }}</li>
-                        <li class="list-group-item"><b>Nama: </b>{{ $Mahasiswa->Nama }}</li>
-                        <li class="list-group-item"><b>Tempat Tanggal Lahir: </b>{{ $Mahasiswa->TTL }}</li>
-                        <li class="list-group-item"><b>Kelas: </b>{{ $Mahasiswa->Kelas->nama_kelas }}</li>
-                        <li class="list-group-item"><b>Jurusan: </b>{{ $Mahasiswa->Jurusan }}</li>
-                        <li class="list-group-item"><b>No_Handphone: </b>{{ $Mahasiswa->No_Handphone }}</li>
-                        <li class="list-group-item"><b>E-mail: </b>{{ $Mahasiswa->email }}</li>
+                        <li class="list-group-item"><b>Nim : </b>{{ $Mahasiswa->Nim }}</li>
+                        <li class="list-group-item"><b>Nama : </b>{{ $Mahasiswa->Nama }}</li>
+                        <li class="list-group-item"><b>Foto : </b><img width="100px" src="{{ asset('storage/' . $Mahasiswa->Foto) }}">
+                        <li class="list-group-item"><b>Tempat Tanggal Lahir : </b>{{ $Mahasiswa->TTL }}</li>
+                        <li class="list-group-item"><b>Kelas : </b>{{ $Mahasiswa->Kelas->nama_kelas }}</li>
+                        <li class="list-group-item"><b>Jurusan : </b>{{ $Mahasiswa->Jurusan }}</li>
+                        <li class="list-group-item"><b>No_Handphone : </b>{{ $Mahasiswa->No_Handphone }}</li>
+                        <li class="list-group-item"><b>E-mail : </b>{{ $Mahasiswa->email }}</li>
                     </ul>
                 </div>
                 <a class="btn btn-success mt-3" href="{{ route('mahasiswa.index') }}">Kembali</a>
